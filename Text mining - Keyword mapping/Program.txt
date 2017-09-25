@@ -1,0 +1,21 @@
+file=open("C:\\Users\\abc12\\Documents\\College\\Projects\\DM\\Test\\real_data.txt","r+")
+file2=open("C:\\Users\\abc12\\Documents\\College\\Projects\\DM\\Test\\Real_locations.txt","r+")
+file_write =open("C:\\Users\\abc12\\Documents\\College\\Projects\\DM\\Test\\results.txt","w")
+string = "Place"+","+"Count"+"\n"
+file_write.write(string)
+wordcount={}
+for word in file.read().split():
+    if word not in wordcount:
+        wordcount[word] = 1
+    else:
+        wordcount[word] += 1
+for place in file2.read().split():
+    for k,v in wordcount.items():
+        if k == place:
+            string = k+","+str(v)+"\n"
+            file_write.write(string)
+            print (k, v)
+    
+file.close()
+file2.close()
+file_write.close()
